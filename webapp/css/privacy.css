@@ -1,0 +1,177 @@
+.banner-wrap{
+    width: 100%;
+    padding-bottom: 25%;
+    /* background: url('../img/privacy-banner.png') no-repeat;
+    background-size: 100%; */
+    position: relative;
+}
+.banner-wrap .bg{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.banner-wrap h1{
+    color: #fff;
+    font-size: 0.4rem;
+    letter-spacing: 0.08rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.bread-crumbs{
+    width: 9.6rem;
+    margin: 0 auto;
+    font-size: 0.14rem;
+    color: #666;
+    padding: 0.43rem 0 0;
+}
+.bread-crumbs i{
+    margin: 0 0.1rem;
+}
+.bread-crumbs .current{
+    color: #12aef1;
+}
+.content{
+    width: 9.6rem;
+    margin: 0 auto;
+    padding: 0.2rem 0 0.5rem ;
+    font-size: 0.14rem;
+    line-height: 0.32rem;
+    color: #595959;
+}
+.content h2{
+    font-size: 0.24rem;
+    line-height: 0.7rem;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0.3rem; 
+}
+.content .indent{
+    text-indent: 0.3rem;
+}
+.content .center{
+    font-size: 0.18rem;
+    text-align: center;
+    padding: 0.2rem 0;
+}
+.content .list li{
+    float: left;
+    position: relative;
+    margin: 0.2rem 0;
+}
+.content .list-4{
+    padding: 0.2rem 0;
+}
+.content .list-4 li{
+    width: 25%;
+    padding-bottom: 10.64%;
+}
+.content .list-2 li{
+    width: 50%;
+}
+.content .list-2.company-culture li{
+    text-align: center;
+}
+.content .list-2.company-culture li img{
+    width: 90%;
+    position: inherit;
+    top: 0;
+    left: 0;
+    transform: translate(0,0);
+}
+.content .list li img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    max-width: 100%;
+    transform: translate(-50%,-50%);
+}
+.content .list li img.img90{
+    max-width: 90%;
+}
+.content .list li img.img80{
+    max-width: 80%;
+}
+.content .list li img.img50{
+    max-width: 50%;
+}
+.content .list li img.img40{
+    max-width: 40%;
+}
+.content .list-5 li{
+    width: 20%;
+    padding-bottom: 7.18%;
+}
+.content .contxt-wrap li{
+    padding: 0 0.33rem 0 0.2rem;
+    box-sizing: border-box;
+}
+.content .contxt-wrap{
+    border-top: 1px solid #f0f0f0;
+    padding: 0.5rem 0 0;
+}
+.content .contxt-wrap h3{
+    padding: 0 0 0.22rem;
+}
+.content .contxt-wrap h3 a{
+    font-size: 0.2rem;
+    color: #12aef1;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.content .contxt-wrap .contxt{
+    font-size: 0.16rem;
+    color:  #737373;
+    line-height: 0.3rem;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.content .contxt-wrap .tips{
+    padding: 0.5rem 0 0;
+    font-size: 0.14rem;
+    color: #8c8c8c;
+}
+.content .contxt-wrap .contxt .tips .from{
+    margin-left: 0.1rem;
+}
+@media screen and (max-width: 48em){
+    .content{
+        width: 100%;
+        padding: 0.2rem 0.5rem 0.5rem;
+        box-sizing: border-box;
+    }
+    .bread-crumbs{
+        width: 100%;
+        padding: 0.2rem 0.5rem 0;
+        box-sizing: border-box;
+    }
+    .content .center{
+        padding: 0.2rem 0 0;
+    }
+    .content .list-5 li{
+        width: 33.33%;
+    }
+}
+@media screen and (max-width: 26.5625em){
+    .content .list-5 li{
+        width: 33.33%;
+    }
+    .content .contxt-wrap li{
+        width: 100%;
+    }
+    .content .list-2.company-culture li{
+        width: 100%;
+        padding-bottom: 0;
+    }
+    .content .list-2.company-culture li img{
+        width: 100%;
+    }
+}

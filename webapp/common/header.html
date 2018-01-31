@@ -1,0 +1,65 @@
+<!-- [if lte IE 8]>
+<p class="browerupgrade">您的浏览器版本有点老哦~  请到 <a href="http://browsehappy.com">这里</a> 更新，以获取最优质的体验!!!</p>
+<![endif]-->
+<header>
+    <div class="container clearfix">
+        <h1 class="pull-left">
+            <a href="index.html"><img src="./img/logo.png" alt="帮帮还"> </a>
+        </h1>
+        <div class="nav-wrap pull-right">
+            <div class="menu"></div>
+            <ul class="nav clearfix">
+                <li class="active"><a href="./index.html" data-nav-id="0">首页</a></li>
+                <li><a href="./index.html" data-nav-id="1">关于帮帮还</a></li>
+                <li><a href="" target="_blank" data-nav-id="2">申请合作</a></li>
+                <li><a href="" target="_blank" data-nav-id="3">帮助中心</a></li>
+                <li><a href="" target="_blank" data-nav-id="3">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="floating-wrap">
+    <ul>
+        <li class="float-wechat">
+            <img src="./img/float-wechat.png" alt="帮帮还微信"><p class="tips"><img src="./img/qrcode.png" alt="帮帮还微信"></p>
+        </li>
+        <li class="float-qq" data-qq="19497209">
+            <img src="./img/float-qq.png" alt="帮帮还QQ"><p class="tips">点我发起QQ聊天</p>
+        </li>
+        <li class="float-gotop"><p>返回<br/>顶部</p></li>
+    </ul>
+</div>
+<!--[if lt IE 9]>
+<script src="./lib/html5shiv.js"></script>
+<![endif]-->
+<script src="./lib/picturefill.min.js"></script>
+<script>
+    $(function() {
+        // 返回顶部
+        $('.float-gotop').click(function() {
+            $('html,body').animate({scrollTop:0},700);
+        });
+        // 悬浮框
+        $(window).scroll(function(){ 
+            //获取窗口的滚动条的垂直位置 
+            var scrollTop = $(window).scrollTop(); 
+            var maxH = $(window).height();
+            console.log(scrollTop,maxH);
+            if(scrollTop >= maxH){
+                $('.float-gotop').fadeIn(500);
+            }else{
+                $('.float-gotop').fadeOut(500);
+            }
+        });
+        // QQ聊天
+        $('.float-qq').click(function() {
+            var qq = $(this).attr('data-qq');//获取qq号
+            window.open('http://wpa.qq.com/msgrd?v=3&uin='+qq+'&site=qq&menu=yes','_brank');
+        });
+        // 菜单
+        $('header .menu').click(function(){
+            // $('header .nav').fadeToggle(50)
+            $('header .nav').slideToggle(50)
+        });
+    });
+</script>

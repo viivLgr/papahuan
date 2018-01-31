@@ -1,47 +1,98 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>帮帮还</title>
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/index.css">
   <link rel="stylesheet" href="./lib/swiper/swiper-3.4.2.min.css">
 </head>
-<body>
-<!-- 你的HTML代码 -->
-<header>
-    <div class="container">
-        <h1><a href="index.html"><img src="./img/logo.png" alt="帮帮还"></a></h1>
-        <div class="nav-wrap">
-            <ul class="nav clearfix">
-                <li class="active"><a href="/" data-nav-id="0">首页</a></li>
-                <li><a href="javascript:void(0);" target="_blank" data-nav-id="1">关于帮帮还</a></li>
-                <li><a href="javascript:void(0);" target="_blank" data-nav-id="2">申请合作</a></li>
-                <li><a href="javascript:void(0);" target="_blank" data-nav-id="3">帮助中心</a></li>
-                <li><a href="javascript:void(0);" target="_blank" data-nav-id="3">联系我们</a></li>
-            </ul>
+<body>  
+<div class="header-wrap"></div>
+<div class="download-app-wrap">
+    <div class="container clearfix">
+        <div class="left">
+            <img src="./img/download-phone.png" alt="帮帮还">
+        </div>
+        <div class="right">
+            <img src="./img/download-qrcode.png" alt="帮帮还">
+            <h3>您身边的信用卡管理专家</h3>
+            <p>一键还款 省钱又省心</p>
+            <p>告别逾期 | 手续费低 | 不限额度 | 笔笔积分 | 完美账单</p>
+            <a href="" class="btn">立即下载体验</a>
         </div>
     </div>
-</header>
+</div>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="./img/banner-01.png" alt="帮帮还,您身边的信用卡管理专家">
-            <div class="inner">
-                <p><span class="dis">帮帮还<br/>您身边的信用卡管理专家</span></p>
-                <a href="downloadapp.html" class="download-app">APP下载</a>
+            <picture>
+                <source srcset="./img/ios/banner-01@3x.png" media="(min-width:70em)">
+                <source srcset="./img/ios/banner-01@2x.png" media="(min-width:48em)">
+                <img src="./img/ios/banner-01.png" alt="帮帮还,您身边的信用卡管理专家">
+            </picture>
+            <!-- <img src="./img/banner-01.png" alt="帮帮还,您身边的信用卡管理专家"> -->
+            <div class="inner inner-01">
+                <p>
+                    <span class="text-hide">帮帮还<br/>您身边的信用卡管理专家</span>
+                </p>
+                <div class="download-app">APP下载</div>
             </div>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide fee-slider">
+            <picture>
+                <source srcset="./img/ios/banner-02@3x.png" media="(min-width:70em)">
+                <source srcset="./img/ios/banner-02@2x.png" media="(min-width:48em)">
+                <img src="./img/ios/banner-02.png" alt="帮帮还,您身边的信用卡管理专家">
+            </picture>
             <img src="./img/banner-02.png" alt="帮帮还,您身边的信用卡管理专家">
-            <div class="inner">
-                <p>帮帮还<br/>您身边的信用卡管理专家</p>
-                <a href="downloadapp.html" class="download-app">APP下载</a>
+            <div class="inner inner-02">
+                <p class="go-fee-wrap">算算费用有多低？</p>
+                <div class="fee-wrap">
+                    <h3>算算费用有多低？</h3>
+                    <div class="scroll-bar-wrap">
+                        <div class="scrollbar">
+                            <div class="track"></div>
+                            <div class="thumb"><span>￥</span>
+                                <p class="txt"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <p class="tr">
+                            <span>分几笔还</span>
+                            <span>10笔</span>
+                            <span>15笔</span>
+                            <span>20笔</span>
+                        </p>
+                        <p class="tr repayments">
+                            <span>还款周转金(元)</span>
+                            <span>100</span>    
+                            <span>66.67</span>    
+                            <span>50</span>    
+                        </p>
+                        <p class="tr fee">
+                            <span>手续费(元)</span>
+                            <span>16.8</span>    
+                            <span>21.8</span>    
+                            <span>26.8</span>    
+                        </p>
+                        <p class="tips"><span>*</span>实际费用按申请人选择的日期和次数来计算，计算器只做参考</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+     <!-- 如果需要分页器 -->
+     <div class="swiper-pagination"></div>
+     <!-- 如果需要导航按钮 -->
+     <div class="swiper-button-prev swiper-button-white"></div>
+     <div class="swiper-button-next swiper-button-white"></div>
 </div>
 <div class="section">
     <h2>为什么选择帮帮还</h2>
@@ -90,14 +141,48 @@
         </li>
     </ul>
 </div>
-<div class="section full">
+<div class="mob-fee-wrap" id="mobFeeWrap">
+    <div class="fee-wrap">
+        <h3>算算费用有多低？</h3>
+        <div class="scroll-bar-wrap">
+            <div class="scrollbar">
+                <div class="track"></div>
+                <div class="thumb"><span>￥</span>
+                    <p class="txt"></p>
+                </div>
+            </div>
+        </div>
+        <div class="table-wrap">
+            <p class="tr">
+                <span>分几笔还</span>
+                <span>10笔</span>
+                <span>15笔</span>
+                <span>20笔</span>
+            </p>
+            <p class="tr repayments">
+                <span>还款周转金(元)</span>
+                <span>100</span>    
+                <span>66.67</span>    
+                <span>50</span>    
+            </p>
+            <p class="tr fee">
+                <span>手续费(元)</span>
+                <span>16.8</span>    
+                <span>21.8</span>    
+                <span>26.8</span>    
+            </p>
+            <p class="tips"><span>*</span>实际费用按申请人选择的日期和次数来计算，计算器只做参考</p>
+        </div>
+    </div>
+</div>
+<div class="section full full-1">
     <ul class="list list-2 clearfix">
-        <li>
-            <img src="./img/phone3.png" alt="全国信用卡管理APP">
-        </li>
         <li>
             <h3>全国信用卡管理APP品牌</h3>
             <p>帮帮还是一款具有智能管理信用卡功能的APP，通过智能解析信用卡电子账单，实现持卡人用卡人信息管理和个人财务的智能化应用。帮帮还APP只需持卡人少量的资金（只需账单金额的5%-10%），即可一键还清全部账单，轻松实现大额资金利用、智能还款、美化账单，就此告别信用卡逾期，促进信用卡良性发展。</p>
+        </li>
+        <li>
+            <img src="./img/phone3.png" alt="全国信用卡管理APP">
         </li>
     </ul>
 </div>
@@ -124,15 +209,15 @@
 <div class="section full full-2">
     <ul class="list list-2 clearfix">
         <li>
-            <div class="canvas-wrapper">
-                <canvas class="table"></canvas>
-                <h4>2017年信用卡发卡量及未来预测 （单位：亿张）</h4>
-            </div>
-        </li>
-        <li>
             <h3>市场前景</h3>
             <p>《信用卡行业市场前瞻与投资战略规划分析报告》统计数据显示，截止2016年末，我国信用卡累计发放量达4.6 亿张，同比增长14.7%。2017年中国信用卡累计发卡量将达到6.91亿张，未来五年年均复合增长率约为13.25%，2021年中国信用卡发卡量将达到11.36亿张。</p>
             <p>随着信用卡发卡量的增加和持卡人数的增加，如何还清信用卡账单成为大部分持卡人的首要问题。2016年信用卡逾期半年未偿还信贷总额，较上年末增幅达40.87%，信用卡还款需求巨大。</p>
+        </li>
+        <li>
+            <div class="canvas-wrapper">
+                <canvas id="cardList" class="table"></canvas>
+                <h4>2017年信用卡发卡量及未来预测 （单位：亿张）</h4>
+            </div>
         </li>
     </ul>
 </div>
@@ -167,24 +252,26 @@
 <div class="section introduce">
     <div class="container">
         <div class="info">
-            <h3>公司介绍</h3>
-            <p>杭州瓜子科技有限公司前身为杭州转折科技旗下的互联网支付事业部，公司正式于2017年4月份独立运营。杭州瓜子科技有限公司为微信支付和支付宝的官方服务商，是平安银行、浦发银行、民生银行等多家银行的官方合作伙伴，瓜子科技汇聚8位来自BAT互联网行业和金融领域的资深专业人士，现有骨干技术开发26名。瓜子科技在2017年8月喜获A轮天使投资，并整合国内顶尖技术团队设计出了一个全新的信用卡还款养卡模式，打造了一个还款和消费的全智能平台。</p>
+            <div class="inner">
+                <h3>公司介绍</h3>
+                <p>杭州瓜子科技有限公司前身为杭州转折科技旗下的互联网支付事业部，公司正式于2017年4月份独立运营。杭州瓜子科技有限公司为微信支付和支付宝的官方服务商，是平安银行、浦发银行、民生银行等多家银行的官方合作伙伴，瓜子科技汇聚8位来自BAT互联网行业和金融领域的资深专业人士，现有骨干技术开发26名。瓜子科技在2017年8月喜获A轮天使投资，并整合国内顶尖技术团队设计出了一个全新的信用卡还款养卡模式，打造了一个还款和消费的全智能平台。</p>
+            </div>
         </div>
-        <ul class="address">
-            <li class="hangzhou active">杭州(总部)</li>
-            <li class="shanghai">上海</li>
-            <li class="suzhou">苏州</li>
-            <li class="huzhou">湖州</li>
-            <li class="ningbo">宁波</li>
-            <li class="shaoxing">绍兴</li>
-            <li class="jinhua">金华</li>
-            <li class="taizhou">台州</li>
-            <li class="nanchang">南昌</li>
-            <li class="guangzhou">广州</li>
-            <li class="huizhou">惠州</li>
-            <li class="shenzhen">深圳</li>
-        </ul>
     </div>
+    <ul class="address">
+        <li class="hangzhou active">杭州(总部)</li>
+        <li class="shanghai">上海</li>
+        <li class="suzhou">苏州</li>
+        <li class="huzhou">湖州</li>
+        <li class="ningbo">宁波</li>
+        <li class="shaoxing">绍兴</li>
+        <li class="jinhua">金华</li>
+        <li class="taizhou">台州</li>
+        <li class="nanchang">南昌</li>
+        <li class="guangzhou">广州</li>
+        <li class="huizhou">惠州</li>
+        <li class="shenzhen">深圳</li>
+    </ul>
 </div>
 <div class="section video">
     <ul class="list list-2 clearfix">
@@ -228,6 +315,7 @@
     </ul>
 </div>     
 <div class="section apply">
+    <div class="bg"></div>
     <div class="container">
         <div class="form-wrapper">
             <h3>申请资料</h3>
@@ -241,25 +329,11 @@
                 <div class="input-line">
                     <div class="select">
                         <input type="text" data-select name="province" value="浙江" readonly/>
-                        <ul data-option class="select-options province">
-                            <li>北京</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                            <li>杭州</li>
-                        </ul>
+                        <ul data-option class="select-options province"></ul>
                     </div>
                     <div class="select">
                         <input type="text" data-select name="city" value="杭州" readonly/>
-                        <ul data-option class="select-options city">
-                            <li>杭州</li>
-                            <li>湖州</li>
-                        </ul>
+                        <ul data-option class="select-options city"></ul>
                     </div>
                 </div>
                 <div class="input-line">
@@ -268,11 +342,20 @@
                 <div class="input-line">
                     <input type="text" name="resources" placeholder="您有什么资源"/>
                 </div>
+                <div class="btn-line">
+                    <button type="button" class="btn">申请合作</button>
+                </div>
             </form>
+            <div class="connect clearfix">
+                <span>联系电话：0571-56662907<br/>稍后与您联系，请保持手机畅通</span>
+                <img src="./img/qrcode.png" alt="帮帮还">
+            </div>
         </div>
     </div>
 </div>
+<div class="footer-wrap"></div>
 <script src="./lib/jquery/jquery-3.2.0.min.js"></script>
+<script src="./js/common.js"></script>
 <script src="./lib/swiper/swiper-3.4.2.min.js"></script>
 <script src="./js/index.js"></script>
 </body>
