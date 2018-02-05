@@ -44,7 +44,6 @@
             //获取窗口的滚动条的垂直位置 
             var scrollTop = $(window).scrollTop(); 
             var maxH = $(window).height();
-            console.log(scrollTop,maxH);
             if(scrollTop >= maxH){
                 $('.float-gotop').fadeIn(500);
             }else{
@@ -58,7 +57,6 @@
         });
         // 菜单
         $('header .menu').click(function(){
-            // $('header .nav').fadeToggle(50)
             $('header .nav').slideToggle(50)
         });
     });

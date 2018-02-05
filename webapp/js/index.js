@@ -1,6 +1,6 @@
 $(function() {
     var mySwiper = new Swiper('.swiper-container', {
-        autoplay: false,//可选选项，自动滑动
+        autoplay: true,//可选选项，自动滑动
         autoplay: 2000,
         loop: true,
         preventClicks : false,//默认true
@@ -11,13 +11,13 @@ $(function() {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev'
     })
-    mySwiper.stopAutoplay();
-    // $('.swiper-container .swiper-slide').mouseenter(function () {
-    //     mySwiper.stopAutoplay();
-    // });
-    // $('.swiper-container .swiper-slide').mouseleave(function () {
-    //     mySwiper.startAutoplay();
-    // });
+    // mySwiper.stopAutoplay();
+    $('.swiper-container .swiper-slide').mouseenter(function () {
+        mySwiper.stopAutoplay();
+    });
+    $('.swiper-container .swiper-slide').mouseleave(function () {
+        mySwiper.startAutoplay();
+    });
 
     // 移动端移动到计算器位置
     $(".go-fee-wrap").click(function() {
@@ -34,6 +34,73 @@ $(function() {
     $('.download-app-wrap').click(function(){
         $('.download-app-wrap').fadeOut(500)
     });
+
+    // 申请资料 http://106.15.51.167:8020
+    var $form = $('#applyForm')
+    $form.find('.confirm').click(function(){
+        var phoneReg = /^0?1[35784][0-9][0-9]{8}$/;//手机号正则表达
+        var userName = $form.find('input[name="UserName"]').val()
+        var phone = $form.find('input[name="Phone"]').val()
+        var induStry = $form.find('input[name="InduStry"]').val()
+        var reSources = $form.find('input[name="ReSources"]').val()
+        var phone = $form.find('input[name="Phone"]').val()
+        if(userName.length < 0 || userName == ''){
+            showMsg('请输入您的姓名');
+            return;
+        }
+        if(userName.length > 8 && userName != ''){
+            showMsg('姓名太长啦，不得超过8个字符哦');
+            return;
+        }
+        if(phone.length < 0 || phone == ''){
+            showMsg('请输入您的手机号');
+            return;
+        }
+        if(!phoneReg.test(phone)){
+            showMsg('请输入正确的手机号');
+            return;
+        }
+        if(induStry.length < 0 || induStry == ''){
+            showMsg('请输入您的目前所从事的行业');
+            return;
+        }
+        if(induStry.length > 128 && induStry != ''){
+            showMsg('您输入的行业信息太长啦，不得超过128个字符哦');
+            return;
+        }
+        if(reSources.length < 0 || reSources == ''){
+            showMsg('请输入您的资源');
+            return;
+        }
+        if(reSources.length > 128 && reSources != ''){
+            showMsg('您输入的资源信息太长啦，不得超过128个字符哦');
+            return;
+        }
+        var formData = {
+            UserName: userName,
+            Phone: phone,
+            Province: $form.find('input[name="province"]').val(),
+            City: $form.find('input[name="city"]').val(),
+            InduStry: induStry,
+            ReSources: reSources
+        }
+        $.post('http://106.15.51.167:8020', formData, function(res){
+            var json = JSON.parse(res)
+            console.log('result',res,json);
+            if(json.Code == 100){
+                showMsg('您已经申请成功啦');
+                resetForm($form);
+            }else{
+                showMsg(json.Msg)
+            }
+        });
+    });
+    function resetForm($form){
+        $form.find('input').val('');
+        $form.find('input[name="province"]').val('浙江');
+        $form.find('input[name="city"]').val('杭州');
+    }
+
 
     // 计算器
     var feeObj = [
@@ -119,14 +186,15 @@ $(function() {
         Value: function (callback) {
             var valite = false;
             var currentX;
-            var scrollBarWidth = $("#scrollBar").width()
-            var $thumb = $('.scroll-bar-wrap .thumb')
-            var $track = $('.scroll-bar-wrap .track')
-            var $txt = $('#scrollBar .txt')
             $('.scroll-bar-wrap .scrollbar').click(function(e) {
-                console.log($('.scroll-bar-wrap .track').offset().left, $('.scroll-bar-wrap .track').parents('.fee-slider').offset().left, $('.scroll-bar-wrap .track').offset().left - $('.scroll-bar-wrap .track').parents('.fee-slider').offset().left)
+                var $scrollbar = $(this);
+                var $thumb = $scrollbar.find('.thumb')
+                var $track = $scrollbar.find('.track')
+                var $txt = $scrollbar.find('.txt')
+                var scrollBarWidth = $scrollbar.width()
                 var startX = $track.offset().left;
                 currentX = e.clientX - startX - 15;
+                console.log('startX', $track.parents('.fee-wrap').offset().left)
                 $thumb.css("margin-left", currentX + "px");
                 $track.css("width", currentX + 4 + "px");
                 if (currentX >= scrollBarWidth) {
@@ -145,16 +213,24 @@ $(function() {
                     ScrollBar.value = ScrollBar.values[ScrollBar.currentIdx]
                 }
                 $txt.html(ScrollBar.value);
+                console.log('currentIdx', ScrollBar.currentIdx)
                 ScrollBar.resetrepaymentsHtml(ScrollBar.currentIdx)
                 ScrollBar.initX = currentX;
             })
             $(".scroll-bar-wrap .thumb").on('mousedown touchstart', function (e) {
                 e.stopPropagation();
+                var $scrollbar = $(this).parent('.scrollbar')
+                var $thumb = $scrollbar.find('.thumb')
+                var $track = $scrollbar.find('.track')
+                var $txt = $scrollbar.find('.txt')
+                var scrollBarWidth = $scrollbar.width()
                 valite = true;
-                var startX = e.clientX
+                var startX = e.clientX || e.originalEvent.changedTouches[0].clientX
+                console.log('touchstart:',startX)
                 $(document.body).on('mousemove touchmove', function (event) {
                     if (valite == false) return;
-                    var changeX = event.clientX - startX;
+                    var moveStart = event.clientX || event.originalEvent.changedTouches[0].clientX
+                    var changeX = moveStart - startX;
                     currentX = changeX + ScrollBar.initX
                     console.log('currentX',currentX, changeX, ScrollBar.initX)
                     $thumb.css("margin-left", currentX + "px");
@@ -197,12 +273,13 @@ $(function() {
         getInitX: function () {
             for(var i = 0, l = this.values.length; i < l; i++){
                 if(this.values[i] > this.value && i > 0){
-                    this.initX = $(".scroll-bar-wrap").width() * (i / l);
+                    this.initX = $(".scrollbar").width() * (i / l);
                     return
                 }
             }
         },
         resetrepaymentsHtml: function(index) {
+            console.log('index',index)
             var repaymentsHtml = '<span>还款周转金(元)</span>';
             repaymentsHtml += '<span>'+this.data[index].repayments10+'</span>' ;
             repaymentsHtml += '<span>'+this.data[index].repayments15+'</span>' ;  
@@ -248,7 +325,6 @@ $(function() {
             var provincesList = json.citylist;
             var html = ''
             $options.html(html);
-            console.log($this.attr(name));
             if($this.attr('name') === 'province'){
                 for(var i = 0, len = provincesList.length; i < len; i++){
                     if(provincesList[i].p == defaulValue){

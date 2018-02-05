@@ -150,10 +150,11 @@
 	border-radius: 2em;
 }
 .scroll-bar-wrap .thumb {
-	height: 0.2rem;
-    width: 0.2rem;
+	height: 20px;
+    width: 20px;
+    font-size: 12px;
     text-align: center;
-    line-height: 0.2rem;
+    line-height: 20px;
     background: #12aef1;
     color: #fff;
     border: 1px solid #fff;
@@ -162,30 +163,30 @@
     box-shadow: 0px 0px 5px #ccc;
     border-radius: 50%;
 	position: absolute;
-	margin-top: -0.16rem;
+	margin-top: -16px;
     cursor: pointer;
     position: relative;
 }
 .scroll-bar-wrap .thumb .txt{
     position: absolute;
-    top: -0.3rem;
-    left: -0.08rem;
+    top: -30px;
+    left: -8px;
     background: #12aef1;
     color: #fff;
-    padding: 0.02rem 0.05rem;
-    border-radius: 0.02rem;
+    padding: 2px 5px;
+    border-radius: 2px;
 }
 .scroll-bar-wrap .thumb .txt::after{
     content: '';
     position: absolute;
-    bottom: -0.05rem;
+    bottom: -5px;
     left: 50%;
-    margin-left: -0.05rem;
+    margin-left: -5px;
     width: 0;
     height: 0;
-    border-top: 0.05rem solid #12aef1;
-    border-right: 0.05rem solid transparent;
-    border-left: 0.05rem solid transparent;
+    border-top: 5px solid #12aef1;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
 }
 .fee-wrap .table-wrap{
     padding: 0.15rem 0.60rem;
@@ -733,6 +734,7 @@
     color: #404040;
     outline: none;
     box-sizing: border-box;
+    box-shadow: none;
 }
 .section.apply .container .form-wrapper .input-line .select{
     width: 48%;
@@ -759,6 +761,7 @@
     border-radius: 0.05rem;
     overflow-y: auto;
     box-shadow: 0 1px 4px 1px rgba(0,0,0,0.2);
+    z-index: 2;
     display: none;
 }
 .section.apply .container .form-wrapper .input-line .select .select-options li{

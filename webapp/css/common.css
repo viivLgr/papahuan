@@ -116,7 +116,7 @@ a {
 }
 @media screen and (max-width: 26.5625em){
 	html{
-		font-size: 70px;
+		font-size: 80px;
 	}
 }
 
@@ -200,7 +200,8 @@ header .container .nav-wrap a{
 		top: 0.7rem;
 		background: rgba(255, 255, 255, 0.8);
 		z-index: 99;
-		box-shadow: 0 1px 4px 0px rgba(255,255,255,0.4);
+		/* box-shadow: 0 1px 4px 0px rgba(255,255,255,0.4); */
+		box-shadow: 0 1px 4px 1px rgba(0,0,0,0.2)
 	}
 	header .container .nav-wrap li + li a{
 		border-top: 1px solid rgba(20, 175, 241, 0.6);
@@ -371,4 +372,22 @@ footer .footer .tips span + span i{
     line-height: 0.17rem;
     display: inline-block;
     vertical-align: middle;
+}
+@media screen and (max-width: 26.5625em){
+	.floating-wrap li .tips img{
+		width: 0.64rem;
+	}
+}
+
+/* 悬浮提示 */
+.layer-msg{
+	position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 0.1rem 0.2rem;
+	font-size: 0.14rem;
 }
